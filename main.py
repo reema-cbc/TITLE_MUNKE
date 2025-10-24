@@ -323,11 +323,22 @@ var= [
 
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import json
 
 app=FastAPI()
+origins = [
+    "*",  # allows all origins, for production you should specify your frontend URL
+]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,       # allow requests from these origins
+    allow_credentials=True,
+    allow_methods=["*"],         # allow all HTTP methods
+    allow_headers=["*"],         # allow all headers
+)
 class QueryRequest(BaseModel):
     question: str
 
