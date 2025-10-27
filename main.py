@@ -351,6 +351,7 @@ def ask_question(request: QueryRequest):
         if item["question"].lower() == user_query.lower():
             return {"answer": item["answer"]}
 
-    return {"answer": "No match, this is invalid."}
+    return {"answer": "I'm sorry, I don’t have that information right now. Could you please rephrase your question or provide more details?"}
+  
 
 
